@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "slide-maker"
+version = "0.1.0"
+description = "Agentic chapter-to-class-slides workflow using CrewAI with FastMCP-ready entrypoints."
+readme = "README.md"
+requires-python = ">=3.10,<3.14"
+dependencies = [
+  "crewai[openai,anthropic,gemini]>=0.100.0",
+  "fastmcp>=2.0.0",
+  "groq>=0.13.0",
+  "pydantic>=2.0.0",
+  "pypdf>=5.0.0",
+  "python-pptx>=1.0.0",
+  "PyYAML>=6.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0.0",
+]
+yaml = [
+  "PyYAML>=6.0.0",
+]
+
+[project.scripts]
+slide-maker = "slide_maker.cli:main"
+kickoff = "slide_maker.main:kickoff"
+plot = "slide_maker.main:plot"
+
+[tool.crewai]
+type = "flow"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
