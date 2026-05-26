@@ -1,4 +1,4 @@
-# slide_maker
+# Slide Maker
 
 CrewAI Flow for turning a book chapter into a class PowerPoint deck.
 
